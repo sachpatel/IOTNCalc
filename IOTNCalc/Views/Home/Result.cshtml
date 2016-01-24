@@ -1,0 +1,77 @@
+﻿@model IOTNCalc.Models.IOTNViewModel
+
+@{
+    ViewBag.Title = "Result";
+}
+
+<h1>The IOTN is: @Model.ResultIOTN.ToString()</h1>
+
+
+<h3>Breakdown - common ailments/symptoms</h3>
+
+@{
+    switch (Model.ResultIOTN)
+    {
+        case IOTNCalc.Models.IOTNResult.IOTN1:
+            <b>Grade 1 (None)</b>
+            <ul>
+                <li>Extremely minor malocclusions including contact point displacements less than 1 mm.</li>
+            </ul>
+            break;
+        case IOTNCalc.Models.IOTNResult.IOTN2:
+            <b>Grade 2 (Slight)</b>
+            <ul>
+                <li>2•a - Increased overjet greater than 3•5 mm, but less than or equal to 6 mm with competent lips.</li>
+                <li>2•b - Reverse overjet greater than 0 mm but less than or equal to 1 mm.</li>
+                <li>2•c - Anterior or posterior crossbite with less than or equal to 1 mm discrepancy between retruded contact position and intercuspal position.</li>
+                <li>2•d - Contact point displacements greater than 1 mm but less than or equal to 2 mm.</li>
+                <li>2•e - Anterior or posterior open bite greater than 1 mm but less than or equal to 2 mm.</li>
+                <li>2•f - Increased overbite greater than or equal to 3•5 mm without gingival contact.2•gPre- or post-normal occlusions with no other anomalies (includes up to half a unit discrepancy).</li>
+            </ul>
+            break;
+        case IOTNCalc.Models.IOTNResult.IOTN3:
+            <b>Grade 3 (Borderline need)</b>
+                <ul>
+                    <li>3•a - Increased overjet greater than 3•5 mm, but less than or equal to 6 mm with incompetent lips.</li>
+                    <li>3•b - Reverse overjet greater than 1 mm, but less than or equal to 3•5 mm.</li>
+                    <li>3•c - Anterior or posterior crossbites with greater than 1 mm, but less than or equal to 2 mm discrepancy between retruded contact position and intercuspal position.</li>
+                    <li>>3•d - Contact point displacements greater than 2 mm, but less than or equal to 4 mm.</li>
+                    <li>3•e - Lateral or anterior open bite greater than 2 mm, but less than or equal to 4 mm.</li>
+                    <li>3•f - Deep overbite complete on gingival or palatal tissues, but no trauma.</li>
+                </ul>
+            break;
+        case IOTNCalc.Models.IOTNResult.IOTN4:
+            <text>
+                <b>Grade 4 (Need treatment)</b>
+                <ul>
+                    <li>4•h - Less extensive hypodontia requiring pre-restorative orthodontics or orthodontic space closure to obviate the need for a prosthesis.</li>
+                    <li>4•a - Increased overjet greater than 6 mm, but less than or equal to 9 mm.</li>
+                    <li>4•b - Reverse overjet greater than 3.5 mm with no masticatory or speech difficulties.</li>
+                    <li>4•m - Reverse overjet greater than 1 mm but less than 3.5 mm with recorded masticatory and speech difficulties.</li>
+                    <li>4•c - Anterior or posterior crossbites with greater than 2 mm discrepancy between retruded contact position and intercuspal position.</li>
+                    <li>4•l - Posterior lingual crossbite with no functional occlusal contact in one or both buccal segments.</li>
+                    <li>4•d - Severe contact point displacements greater than 4 mm.</li>
+                    <li>4•e - Extreme lateral or anterior open bites greater than 4 mm.</li>
+                    <li>4•f - Increased and complete overbite with gingival or palatal trauma.</li>
+                    <li>4•t - Partially erupted teeth, tipped and impacted against adjacent teeth.</li>
+                    <li>4•x - Presence of supernumerary teeth.</li>
+                </ul>
+            </text>
+            break;
+        case IOTNCalc.Models.IOTNResult.IOTN5:
+        <text>
+            <b>Grade 5 (Need treatment)</b>
+            <ul>
+                <li>5•i - Impeded eruption of teeth (except for third molars) due to crowding, displacement, the presence of supernumerary teeth, retained deciduous teeth and any pathological cause.</li>
+                <li>5•h - Extensive hypodontia with restorative implications(more than 1 tooth missing in any quadrant) requiring pre-restorative orthodontics.</li>
+                <li>5•a - Increased overjet greater than 9 mm.</li>
+                <li>5•m - Reverse overjet greater than 3.5 mm with reported masticatory and speech difficulties.</li>
+                <li>5•p - Defects of cleft lip and palate and other craniofacial anomalies.</li>
+                <li>5•s - Submerged deciduous teeth.</li>
+            </ul>
+        </text>
+            break;
+    }
+}
+
+@Html.ActionLink("Restart", "Index", null, new { @class = "btn btn-primary" })

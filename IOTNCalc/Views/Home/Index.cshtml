@@ -1,0 +1,107 @@
+﻿@model IOTNCalc.Models.IOTNViewModel
+
+<h1>IOTN Calc</h1>
+
+@using (Html.BeginForm("Result", "Home"))
+{
+    <fieldset>
+        <legend>Initial Diagnosis</legend>
+
+        <div class="form-group row">
+            <label for="OverJet" class="col-sm-4 form-control-label">Overjet (mm):</label>
+            <div class="col-sm-8">
+                <input id="OverJet" name="OverJet" type="number" min="0" max="10" step=".5" value="@Model.OverJet" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="ReverseOverJet" class="col-sm-4 form-control-label">Reverse Overjet (mm):</label>
+            <div class="col-sm-8">
+                <input id="ReverseOverJet" name="ReverseOverJet" type="number" min="-10" max="0" step=".5" value="@Model.ReverseOverJet" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="MissingTeeth" class="col-sm-4 form-control-label">No of Missing Teeth:</label>
+            <div class="col-sm-8">
+                <input id="MissingTeeth" name="MissingTeeth" type="number" min="0" max="30" value="@Model.MissingTeeth" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="CrossbiteDisplacement" class="col-sm-4 form-control-label">Crossbite Displacement (mm):</label>
+            <div class="col-sm-8">
+                <input id="CrossbiteDisplacement" name="CrossbiteDisplacement" type="number" min="0" max="10" step=".5" value="@Model.CrossbiteDisplacement" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="ContactPointDisplacement" class="col-sm-4 form-control-label">ContactPoint Displacement (mm):</label>
+            <div class="col-sm-8">
+                <input id="ContactPointDisplacement" name="ContactPointDisplacement" type="number" min="0" max="10" step=".5" value="@Model.ContactPointDisplacement" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="AnteriorOpenBite" class="col-sm-4 form-control-label">Anterior OpenBite (mm):</label>
+            <div class="col-sm-8">
+                <input id="AnteriorOpenBite" name="AnteriorOpenBite" type="number" min="0" max="10" step=".5" value="@Model.AnteriorOpenBite" />
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.HasCleftLipPalate)
+                        Has CleftLip & Palate
+                    </label>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.HasImpactedOrEctopicTeeth)
+                        Has Impacted Or Ectopic Teeth
+                    </label>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.HasSupernumeries)
+                        Has Supernumeries
+                    </label>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.HasDeepOverBite)
+                        Has Deep Overbite
+                    </label>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.HasTrauma)
+                        Has Trauma
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Get IOTN</button>
+            </div>
+        </div>
+
+    </fieldset>
+}
+
+@section Scripts{
+
+<script>
+
+</script>
+
+}
