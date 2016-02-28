@@ -18,16 +18,30 @@ namespace IOTNCalc.Models
         public double CrossbiteDisplacement { get; set; }
         public double ContactPointDisplacement { get; set; }
         public double AnteriorOpenBite { get; set; }
-        public int MissingTeeth { get; set; }
-        
-        public bool HasCleftLipPalate { get; set; }        
+        public int MissingTeeth { get; set; } // Per Quadrant
+
+        public bool HasCleftLipPalate { get; set; }
+        public bool HasIncompetantLips { get; set; }
+        public bool HasSpeechAndMasticatoryDifficulty { get; set; }
+        public bool HasSubmergedDeciduousTeeth { get; set; }
+
+
+        public bool HasPosteriorLingualCrossbite { get; set; }
+
         public bool HasMinimalIrregularity { get; set; }
-        public bool HasTrauma { get; set; }
+        //public bool HasTrauma { get; set; }
         public bool HasDeepOverBite { get; set; }
         public bool HasSupernumeries { get; set; }
+        public bool HasImpedingEruption { get; set; }
         public bool HasImpactedOrEctopicTeeth { get; set; }
+        public bool IsPartiallyEruptedAgainstOtherTeeth { get; set; }
+
+        public bool IsCompleteToGingiva { get; set; }
+        public bool HasOverbiteIncreased { get; set; }
+        public bool HasTraumaToPalateOrGingiva { get; set; }
 
         public IOTNResult ResultIOTN { get; set; }
+        public string ResultIOTNSpec { get; set; }
         
     }
 }

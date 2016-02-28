@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -37,6 +36,6 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", false)
 </body>
 </html>
