@@ -8,9 +8,63 @@
         <legend>Initial Diagnosis</legend>
 
         <div class="form-group row">
+            <label for="MissingTeeth" class="col-sm-4 form-control-label">No of Missing Teeth (Per Quadrant):</label>
+            <div class="col-sm-8">
+                <input id="MissingTeeth" name="MissingTeeth" type="number" min="0" max="30" value="@Model.MissingTeeth" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.HasSupernumeries)
+                        Has Supernumeries
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.HasImpedingEruption)
+                        Has Impeding Eruption
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.HasImpactedOrEctopicTeeth)
+                        Has Impacted Or Ectopic Teeth
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.IsPartiallyEruptedAgainstOtherTeeth)
+                        Is Partially Erupted Against Other Teeth
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.HasCleftLipPalate)
+                        Has CleftLip & Palate
+                    </label>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
             <label for="OverJet" class="col-sm-4 form-control-label">Overjet (mm):</label>
             <div class="col-sm-8">
                 <input id="OverJet" name="OverJet" type="number" min="0" max="10" step=".5" value="@Model.OverJet" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.HasIncompetantLips)
+                        Has Incompetant Lips
+                    </label>
+                </div>
             </div>
         </div>
 
@@ -20,18 +74,45 @@
                 <input id="ReverseOverJet" name="ReverseOverJet" type="number" min="-10" max="0" step=".5" value="@Model.ReverseOverJet" />
             </div>
         </div>
-
         <div class="form-group row">
-            <label for="MissingTeeth" class="col-sm-4 form-control-label">No of Missing Teeth:</label>
-            <div class="col-sm-8">
-                <input id="MissingTeeth" name="MissingTeeth" type="number" min="0" max="30" value="@Model.MissingTeeth" />
+            <div class="col-sm-12">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.HasSpeechAndMasticatoryDifficulty)
+                        Has Speech and Masticatory Difficulty
+                    </label>
+                </div>
             </div>
         </div>
+
+
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.HasSubmergedDeciduousTeeth)
+                        Has Submerged Deciduous Teeth
+                    </label>
+                </div>
+            </div>
+        </div>
+
+
 
         <div class="form-group row">
             <label for="CrossbiteDisplacement" class="col-sm-4 form-control-label">Crossbite Displacement (mm):</label>
             <div class="col-sm-8">
                 <input id="CrossbiteDisplacement" name="CrossbiteDisplacement" type="number" min="0" max="10" step=".5" value="@Model.CrossbiteDisplacement" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.HasPosteriorLingualCrossbite)
+                        Has Posterior Lingual Crossbite
+                    </label>
+                </div>
             </div>
         </div>
 
@@ -54,36 +135,21 @@
             <div class="col-sm-12">
                 <div class="checkbox">
                     <label>
-                        @Html.CheckBoxFor(m => m.HasCleftLipPalate)
-                        Has CleftLip & Palate
+                        @Html.CheckBoxFor(m => m.HasOverbiteIncreased)
+                        Has Overbite Increased
                     </label>
                 </div>
 
                 <div class="checkbox">
                     <label>
-                        @Html.CheckBoxFor(m => m.HasImpactedOrEctopicTeeth)
-                        Has Impacted Or Ectopic Teeth
+                        @Html.CheckBoxFor(m => m.IsCompleteToGingiva)
+                        Is Complete To Gingiva
                     </label>
                 </div>
-
                 <div class="checkbox">
                     <label>
-                        @Html.CheckBoxFor(m => m.HasSupernumeries)
-                        Has Supernumeries
-                    </label>
-                </div>
-
-                <div class="checkbox">
-                    <label>
-                        @Html.CheckBoxFor(m => m.HasDeepOverBite)
-                        Has Deep Overbite
-                    </label>
-                </div>
-
-                <div class="checkbox">
-                    <label>
-                        @Html.CheckBoxFor(m => m.HasTrauma)
-                        Has Trauma
+                        @Html.CheckBoxFor(m => m.HasTraumaToPalateOrGingiva)
+                        Has Trauma To Palate Or Gingiva
                     </label>
                 </div>
             </div>
@@ -98,10 +164,9 @@
     </fieldset>
 }
 
-@section Scripts{
+@section Scripts
+{
+    <script>
 
-<script>
-
-</script>
-
+    </script>
 }

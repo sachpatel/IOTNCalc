@@ -4,21 +4,23 @@
     ViewBag.Title = "Result";
 }
 
-<h1>The IOTN is: @Model.ResultIOTN.ToString()</h1>
+<h1>The IOTN is: @Model.ResultIOTNSpec</h1>
 
-
-<h3>Breakdown - common ailments/symptoms</h3>
+@if (!Model.ResultIOTNSpec.Equals("Not Available"))
+{
+    <h3>Breakdown - common ailments/symptoms</h3>
+}
 
 @{
-    switch (Model.ResultIOTN)
+    switch (Model.ResultIOTNSpec.Substring(0, 5))
     {
-        case IOTNCalc.Models.IOTNResult.IOTN1:
+        case "IOTN1":
             <b>Grade 1 (None)</b>
             <ul>
                 <li>Extremely minor malocclusions including contact point displacements less than 1 mm.</li>
             </ul>
             break;
-        case IOTNCalc.Models.IOTNResult.IOTN2:
+        case "IOTN2":
             <b>Grade 2 (Slight)</b>
             <ul>
                 <li>2•a - Increased overjet greater than 3•5 mm, but less than or equal to 6 mm with competent lips.</li>
@@ -29,18 +31,18 @@
                 <li>2•f - Increased overbite greater than or equal to 3•5 mm without gingival contact.2•gPre- or post-normal occlusions with no other anomalies (includes up to half a unit discrepancy).</li>
             </ul>
             break;
-        case IOTNCalc.Models.IOTNResult.IOTN3:
+        case "IOTN3":
             <b>Grade 3 (Borderline need)</b>
-                <ul>
-                    <li>3•a - Increased overjet greater than 3•5 mm, but less than or equal to 6 mm with incompetent lips.</li>
-                    <li>3•b - Reverse overjet greater than 1 mm, but less than or equal to 3•5 mm.</li>
-                    <li>3•c - Anterior or posterior crossbites with greater than 1 mm, but less than or equal to 2 mm discrepancy between retruded contact position and intercuspal position.</li>
-                    <li>>3•d - Contact point displacements greater than 2 mm, but less than or equal to 4 mm.</li>
-                    <li>3•e - Lateral or anterior open bite greater than 2 mm, but less than or equal to 4 mm.</li>
-                    <li>3•f - Deep overbite complete on gingival or palatal tissues, but no trauma.</li>
-                </ul>
+            <ul>
+                <li>3•a - Increased overjet greater than 3•5 mm, but less than or equal to 6 mm with incompetent lips.</li>
+                <li>3•b - Reverse overjet greater than 1 mm, but less than or equal to 3•5 mm.</li>
+                <li>3•c - Anterior or posterior crossbites with greater than 1 mm, but less than or equal to 2 mm discrepancy between retruded contact position and intercuspal position.</li>
+                <li>>3•d - Contact point displacements greater than 2 mm, but less than or equal to 4 mm.</li>
+                <li>3•e - Lateral or anterior open bite greater than 2 mm, but less than or equal to 4 mm.</li>
+                <li>3•f - Deep overbite complete on gingival or palatal tissues, but no trauma.</li>
+            </ul>
             break;
-        case IOTNCalc.Models.IOTNResult.IOTN4:
+        case "IOTN4":
             <text>
                 <b>Grade 4 (Need treatment)</b>
                 <ul>
@@ -58,20 +60,66 @@
                 </ul>
             </text>
             break;
-        case IOTNCalc.Models.IOTNResult.IOTN5:
-        <text>
-            <b>Grade 5 (Need treatment)</b>
-            <ul>
-                <li>5•i - Impeded eruption of teeth (except for third molars) due to crowding, displacement, the presence of supernumerary teeth, retained deciduous teeth and any pathological cause.</li>
-                <li>5•h - Extensive hypodontia with restorative implications(more than 1 tooth missing in any quadrant) requiring pre-restorative orthodontics.</li>
-                <li>5•a - Increased overjet greater than 9 mm.</li>
-                <li>5•m - Reverse overjet greater than 3.5 mm with reported masticatory and speech difficulties.</li>
-                <li>5•p - Defects of cleft lip and palate and other craniofacial anomalies.</li>
-                <li>5•s - Submerged deciduous teeth.</li>
-            </ul>
-        </text>
+        case "IOTN5":
+            <text>
+                <b>Grade 5 (Need treatment)</b>
+                <ul>
+                    <li>5•i - Impeded eruption of teeth (except for third molars) due to crowding, displacement, the presence of supernumerary teeth, retained deciduous teeth and any pathological cause.</li>
+                    <li>5•h - Extensive hypodontia with restorative implications(more than 1 tooth missing in any quadrant) requiring pre-restorative orthodontics.</li>
+                    <li>5•a - Increased overjet greater than 9 mm.</li>
+                    <li>5•m - Reverse overjet greater than 3.5 mm with reported masticatory and speech difficulties.</li>
+                    <li>5•p - Defects of cleft lip and palate and other craniofacial anomalies.</li>
+                    <li>5•s - Submerged deciduous teeth.</li>
+                </ul>
+            </text>
+            break;
+        default:
             break;
     }
-}
+        }
 
-@Html.ActionLink("Restart", "Index", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Restart", "Index", null, new { @class = "btn btn-primary" })
+
+
+
+
+<h3>Values Supplied:</h3>
+
+<p>
+    Missing teeth (per quadrant): <span class="text-primary">@Model.MissingTeeth</span>
+    <br />
+    Supernumary present: <span class="text-primary">@Model.HasSupernumeries.ToString()</span>
+    <br />
+    Impeding eruption: <span class="text-primary">@Model.HasImpedingEruption.ToString()</span>
+    <br />
+    Impacted/Ectopic teeth: <span class="text-primary">@Model.HasImpactedOrEctopicTeeth.ToString()</span>
+    <br />
+    Partially erupted against other teeth: <span class="text-primary">@Model.IsPartiallyEruptedAgainstOtherTeeth.ToString()</span>
+    <br />
+    Cleft lip and Palate: <span class="text-primary">@Model.HasCleftLipPalate.ToString()</span>
+    <br />
+    Overjet mm: <span class="text-primary">@Model.OverJet</span>
+    <br />
+    Incompetent lips: <span class="text-primary">@Model.HasIncompetantLips.ToString()</span>
+    <br />
+    Reverse Overjet mm: <span class="text-primary">@Model.ReverseOverJet</span>
+    <br />
+    Speech + Masticatory Difficulty: <span class="text-primary">@Model.HasSpeechAndMasticatoryDifficulty.ToString()</span>
+    <br />
+    Submerged Deciduous Teeth: <span class="text-primary">@Model.HasSubmergedDeciduousTeeth.ToString()</span>
+    <br />
+    Crossbite Displacement mm: <span class="text-primary">@Model.CrossbiteDisplacement</span>
+    <br />
+    Posterior Lingual Crossbite: <span class="text-primary">@Model.HasPosteriorLingualCrossbite.ToString()</span>
+    <br />
+    Contact Point Displacement mm: <span class="text-primary">@Model.ContactPointDisplacement</span>
+    <br />
+    Openbite mm: <span class="text-primary">@Model.AnteriorOpenBite</span>
+    <br />
+    Overbite Increased (≥3.5mm): <span class="text-primary">@Model.HasOverbiteIncreased.ToString()</span>
+    <br />
+    Complete to gingiva: <span class="text-primary">@Model.IsCompleteToGingiva.ToString()</span>
+    <br />
+    Trauma to palate/gingiva: <span class="text-primary">@Model.HasTraumaToPalateOrGingiva.ToString()</span>
+    <br />
+</p>
