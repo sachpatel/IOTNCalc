@@ -14,7 +14,7 @@ namespace IOTNCalc.Controllers
         [HttpPost]
         public ActionResult Result(IOTNViewModel vm)
         {
-            vm.ResultIOTNSpec = "Not Available";
+            vm.ResultIOTNSpec = "Not Available"; // Default
 
             #region IOTN1 Checks
             if (vm.HasMinimalIrregularity)
